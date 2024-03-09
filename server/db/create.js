@@ -1,11 +1,12 @@
-import mysql from 'mysql2';
+import {pool} from './run.js';
 
-const pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '02042024',
-    database: 'week_21_db'
-}).promise();
+export const drop = async () => {
+    await pool.query('DROP TABLE IF EXISTS Comments');
+    await pool.query('DROP TABLE IF EXISTS Posts');
+    await pool.query('DROP TABLE IF EXISTS Todos');
+    await pool.query('DROP TABLE IF EXISTS Passwords');
+    await pool.query('DROP TABLE IF EXISTS Users');
+}
 
 export const create = async () => {
     // Create the database
@@ -22,7 +23,7 @@ export const create = async () => {
         username varchar(255),
         email varchar(255),
         city varchar(255),
-        phone int,
+        phone bigint,
         website varchar(255),
         companyName varchar(255),
         PRIMARY KEY (id)
@@ -69,9 +70,9 @@ export const create = async () => {
 
     // Create the Passwards table
     await pool.query(`
-    CREATE TABLE IF NOT EXISTS Passwards(
+    CREATE TABLE IF NOT EXISTS Passwords(
         userID int,
-        passward varchar(255),
+        password varchar(255),
         PRIMARY KEY (userID),
         FOREIGN KEY (userID) REFERENCES Users(id)
     );

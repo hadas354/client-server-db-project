@@ -1,2 +1,14 @@
-import {create} from './create.js';
-create();
+import {create, drop} from './create.js';
+import {insert} from './insert.js';
+import mysql from 'mysql2';
+
+export const pool = mysql.createPool({
+    host: 'localhost',
+    user: 'root',
+    password: '02042024',
+    database: 'jsonplaceholderdemo'
+}).promise();
+
+await drop();
+await create();
+await insert();
