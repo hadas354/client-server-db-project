@@ -1,0 +1,11 @@
+{
+    "dependencies": {
+        "mysql": "^2.18.1",
+        "mysql2": "^3.9.2"
+    },
+    "type": "module",
+    "scripts": {
+        "db": "node ./server/db/run.js",
+        "server": "node ./server/server/run.js"
+    }
+}
