@@ -9,6 +9,6 @@ export const pool = mysql.createPool({
     database: 'jsonplaceholderdemo'
 }).promise();
 
-await drop();
-await create();
-await insert();
+//await drop();
+//await create();
+//await insert(); //-default for start
