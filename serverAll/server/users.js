@@ -34,16 +34,16 @@ app.get("/", (req, res) => {
         sqlQuery += " " + conditions.join(" AND ");
 
         // Execute the constructed query
-        pool.query(sqlQuery, (err, result) => {
-            if (err) {
+        pool.query(sqlQuery)
+            .then((result) => {
+                // Send the result back to the client
+                res.json(result.rows); // Assuming the result is in JSON format
+            })
+            .catch((err) => {
                 // Handle the error, for example:
                 console.error("Error executing query:", err);
                 res.status(500).send("Internal Server Error");
-            } else {
-                // Send the result back to the client
-                res.json(result.rows); // Assuming the result is in JSON format
-            }
-        });
+            })
     } else {
         // If no query parameters are provided, return all users
         pool.query("SELECT * FROM users")
@@ -68,68 +68,68 @@ app.get("/", (req, res) => {
 app.get("/:id", (req, res) => {
     const userId = req.params.id;
     pool.query(`SELECT * FROM users WHERE id = ${userId}`)
-    .then((result)=>{
-        console.log(result);
-        if (result[0].length === 0) {
-            // If no user found with the provided ID, return a 404 Not Found response
-            res.status(404).send("User not found");
-        } else {
-            // Send the found user back to the client
-            res.json(result[0].rows[0]); // Assuming the result is in JSON format
-        }
-    })
-    .catch((err)=>{
-        // Handle the error, for example:
-        console.error("Error executing query:", err);
-        res.status(500).send("Internal Server Error");
-    })
+        .then((result) => {
+            if (result[0].length === 0) {
+                // If no user found with the provided ID, return a 404 Not Found response
+                res.status(404).send("User not found");
+            } else {
+                // Send the found user back to the client
+                res.json(result[0]); // Assuming the result is in JSON format
+            }
+        })
+        .catch((err) => {
+            // Handle the error, for example:
+            console.error("Error executing query:", err);
+            res.status(500).send("Internal Server Error");
+        })
 });
 
 //post//
 
 app.post("/", (req, res) => {
+    console.log(req.body);
     const { name, username, email, city, phone, website, companyName } = req.body;
-    pool.query(`INSERT INTO users (name, username, email, city, phone, website, company_name) VALUES ('${name}', '${username}', '${email}', '${city}', '${phone}', '${website}', '${companyName}')`, (err, result) => {
-        if (err) {
+    pool.query(`INSERT INTO users (name, username, email, city, phone, website, companyName) VALUES ('${name}', '${username}', '${email}', '${city}', '${phone}', '${website}', '${companyName}')`)
+        .then((result) => {
+            // Send the result back to the client
+            res.status(201).send("User created successfully");
+        })
+        .catch((err) => {
             // Handle the error, for example:
             console.error("Error executing query:", err);
             res.status(500).send("Internal Server Error");
-        } else {
-            // Send the result back to the client
-            res.status(201).send("User created successfully");
-        }
-    });
+        })
 });
 
 //put//
 app.put("/:id", (req, res) => {
     const userId = req.params.id;
     const { name, username, email, city, phone, website, companyName } = req.body;
-    pool.query(`UPDATE users SET name = '${name}', username = '${username}', email = '${email}', city = '${city}', phone = '${phone}', website = '${website}', company_name = '${companyName}' WHERE id = ${userId}`, (err, result) => {
-        if (err) {
+    pool.query(`UPDATE users SET name = '${name}', username = '${username}', email = '${email}', city = '${city}', phone = '${phone}', website = '${website}', companyName = '${companyName}' WHERE id = ${userId}`)
+        .then((result) => {
+            // Send the result back to the client
+            res.status(200).send("User updated successfully");
+        })
+        .catch((err) => {
             // Handle the error, for example:
             console.error("Error executing query:", err);
             res.status(500).send("Internal Server Error");
-        } else {
-            // Send the result back to the client
-            res.status(200).send("User updated successfully");
-        }
-    });
+        })
 });
 
 //delete//
 app.delete("/:id", (req, res) => {
     const userId = req.params.id;
-    pool.query(`DELETE FROM users WHERE id = ${userId}`, (err, result) => {
-        if (err) {
+    pool.query(`DELETE FROM users WHERE id = ${userId}`)
+        .then((result) => {
+            // Send the result back to the client
+            res.status(200).send("User deleted successfully");
+        })
+        .catch((err) => {
             // Handle the error, for example:
             console.error("Error executing query:", err);
             res.status(500).send("Internal Server Error");
-        } else {
-            // Send the result back to the client
-            res.status(200).send("User deleted successfully");
-        }
-    });
+        })
 });
 
 export default app; // Exporting Router instance

@@ -18,7 +18,7 @@ export const create = async () => {
     // Create the Users table
     await pool.query(`
     CREATE TABLE IF NOT EXISTS Users(
-        id int,
+        id int AUTO_INCREMENT,
         name varchar(255),
         username varchar(255),
         email varchar(255),
@@ -34,7 +34,7 @@ export const create = async () => {
     await pool.query(`
     CREATE TABLE IF NOT EXISTS Todos(
         userID int,
-        id int,
+        id int AUTO_INCREMENT,
         title varchar(255),
         completed BOOLEAN,
         PRIMARY KEY (id),
@@ -45,7 +45,7 @@ export const create = async () => {
     // Create the Posts table
     await pool.query(`
     CREATE TABLE IF NOT EXISTS Posts(
-        id int,
+        id int AUTO_INCREMENT,
         userID int,
         title varchar(255),
         body text,
@@ -58,7 +58,7 @@ export const create = async () => {
     await pool.query(`
     CREATE TABLE IF NOT EXISTS Comments(
         postID int,
-        id int,
+        id int AUTO_INCREMENT,
         name varchar(255),
         body text,
         userID int,
