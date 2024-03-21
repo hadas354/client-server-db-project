@@ -1,7 +1,11 @@
-import { app } from "./run";
-import { pool } from "../db/run";
 
-app.get("/users", (req, res) => {
+import express from 'express';
+import { pool } from "../db/run";
+// import { app } from "./run";
+
+// const app = express();
+export const router = express.Router();
+app.get("/", (req, res) => {
     const id = req.query.id ?? null;
     const name = req.query.name ?? null;
     const username = req.query.username ?? null;
@@ -56,7 +60,7 @@ app.get("/users", (req, res) => {
 });
 
 //show only one user
-app.get("/users/:id", (req, res) => {
+export function getUserById(req, res){
     const userId = req.params.id;
     pool.query(`SELECT * FROM users WHERE id = ${userId}`, (err, result) => {
         if (err) {
@@ -73,4 +77,60 @@ app.get("/users/:id", (req, res) => {
             }
         }
     });
+};
+
+
+////////
+//post//
+////////
+
+app.post("/", (req, res) => {
+    const { name, username, email, city, phone, website, companyName } = req.body;
+    pool.query(`INSERT INTO users (name, username, email, city, phone, website, company_name) VALUES ('${name}', '${username}', '${email}', '${city}', '${phone}', '${website}', '${companyName}')`, (err, result) => {
+        if (err) {
+            // Handle the error, for example:
+            console.error("Error executing query:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            // Send the result back to the client
+            res.status(201).send("User created successfully");
+        }
+    });
 });
+
+//put//
+app.put("/:id", (req, res) => {
+    const userId = req.params.id;
+    const { name, username, email, city, phone, website, companyName } = req.body;
+    pool.query(`UPDATE users SET name = '${name}', username = '${username}', email = '${email}', city = '${city}', phone = '${phone}', website = '${website}', company_name = '${companyName}' WHERE id = ${userId}`, (err, result) => {
+        if (err) {
+            // Handle the error, for example:
+            console.error("Error executing query:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            // Send the result back to the client
+            res.status(200).send("User updated successfully");
+        }
+    });
+});
+
+//delete//
+app.delete("/:id", (req, res) => {
+    const userId = req.params.id;
+    pool.query(`DELETE FROM users WHERE id = ${userId}`, (err, result) => {
+        if (err) {
+            // Handle the error, for example:
+            console.error("Error executing query:", err);
+            res.status(500).send("Internal Server Error");
+        } else {
+            // Send the result back to the client
+            res.status(200).send("User deleted successfully");
+        }
+    });
+});
+
+
+// const PORT = 3305;
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
