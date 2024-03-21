@@ -1,10 +1,10 @@
-
 import express from 'express';
-import { pool } from "../db/run";
-// import { app } from "./run";
+import { pool } from "../db/run.js";
 
-// const app = express();
-export const router = express.Router();
+export const app = express.Router(); // Exporting app as Router
+
+app.use(express.json()); // Middleware to parse JSON bodies
+
 app.get("/", (req, res) => {
     const id = req.query.id ?? null;
     const name = req.query.name ?? null;
@@ -46,43 +46,46 @@ app.get("/", (req, res) => {
         });
     } else {
         // If no query parameters are provided, return all users
-        pool.query("SELECT * FROM users", (err, result) => {
-            if (err) {
-                // Handle the error, for example:
-                console.error("Error executing query:", err);
-                res.status(500).send("Internal Server Error");
-            } else {
+        pool.query("SELECT * FROM users")
+            .then((result) => {
+                // Check if any users are found
+                if (result.length === 0) {
+                    return res.status(404).json({ error: "No users found" });
+                }
+
                 // Send the result back to the client
-                res.json(result.rows); // Assuming the result is in JSON format
-            }
-        });
+                res.status(200).json(result[0]);
+            })
+            .catch((err) => {
+                // Handle the error
+                console.error("Error executing query:", err);
+                res.status(500).json({ error: "Internal Server Error" });
+            });
     }
 });
 
 //show only one user
-export function getUserById(req, res){
+app.get("/:id", (req, res) => {
     const userId = req.params.id;
-    pool.query(`SELECT * FROM users WHERE id = ${userId}`, (err, result) => {
-        if (err) {
-            // Handle the error, for example:
-            console.error("Error executing query:", err);
-            res.status(500).send("Internal Server Error");
+    pool.query(`SELECT * FROM users WHERE id = ${userId}`)
+    .then((result)=>{
+        console.log(result);
+        if (result[0].length === 0) {
+            // If no user found with the provided ID, return a 404 Not Found response
+            res.status(404).send("User not found");
         } else {
-            if (result.rows.length === 0) {
-                // If no user found with the provided ID, return a 404 Not Found response
-                res.status(404).send("User not found");
-            } else {
-                // Send the found user back to the client
-                res.json(result.rows[0]); // Assuming the result is in JSON format
-            }
+            // Send the found user back to the client
+            res.json(result[0].rows[0]); // Assuming the result is in JSON format
         }
-    });
-};
+    })
+    .catch((err)=>{
+        // Handle the error, for example:
+        console.error("Error executing query:", err);
+        res.status(500).send("Internal Server Error");
+    })
+});
 
-
-////////
 //post//
-////////
 
 app.post("/", (req, res) => {
     const { name, username, email, city, phone, website, companyName } = req.body;
@@ -129,8 +132,4 @@ app.delete("/:id", (req, res) => {
     });
 });
 
-
-// const PORT = 3305;
-// app.listen(PORT, () => {
-//     console.log(`Server is running on port ${PORT}`);
-// });
+export default app; // Exporting Router instance
