@@ -1,5 +1,9 @@
-import { app } from "./run";
 import { pool } from "../db/run";
+import express from 'express';
+
+export const app = express.Router(); // Exporting app as Router
+
+app.use(express.json()); // Middleware to parse JSON bodies
 
 app.get("/posts", (req, res) => {
     const userId = req.query.userId ?? null;
