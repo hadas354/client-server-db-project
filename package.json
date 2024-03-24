@@ -6,7 +6,7 @@
     },
     "type": "module",
     "scripts": {
-        "db": "node ./serverAll/db/run.js",
-        "server": "node ./serverAll/server/run.js"
+        "db": "nodemon ./serverAll/db/run.js",
+        "server": "nodemon ./serverAll/server/run.js"
     }
 }

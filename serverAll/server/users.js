@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
         pool.query(sqlQuery)
             .then((result) => {
                 // Send the result back to the client
-                res.json(result.rows); // Assuming the result is in JSON format
+                res.json(result[0]); // Assuming the result is in JSON format
             })
             .catch((err) => {
                 // Handle the error, for example:
@@ -87,7 +87,6 @@ app.get("/:id", (req, res) => {
 //post//
 
 app.post("/", (req, res) => {
-    console.log(req.body);
     const { name, username, email, city, phone, website, companyName } = req.body;
     pool.query(`INSERT INTO users (name, username, email, city, phone, website, companyName) VALUES ('${name}', '${username}', '${email}', '${city}', '${phone}', '${website}', '${companyName}')`)
         .then((result) => {
@@ -120,16 +119,32 @@ app.put("/:id", (req, res) => {
 //delete//
 app.delete("/:id", (req, res) => {
     const userId = req.params.id;
-    pool.query(`DELETE FROM users WHERE id = ${userId}`)
+    
+    // Query to check if the user exists
+    pool.query(`SELECT * FROM users WHERE id = ${userId}`)
         .then((result) => {
-            // Send the result back to the client
-            res.status(200).send("User deleted successfully");
+            if (result[0].length === 0) {
+                // If user doesn't exist, send appropriate response
+                return res.status(404).send("User not found");
+            }
+            // If user exists, proceed with deletion
+            pool.query(`DELETE FROM users WHERE id = ${userId}`)
+                .then(() => {
+                    // Send success response
+                    res.status(200).send("User deleted successfully");
+                })
+                .catch((err) => {
+                    // Handle deletion error
+                    console.error("Error deleting user:", err);
+                    res.status(500).send("Internal Server Error");
+                });
         })
         .catch((err) => {
-            // Handle the error, for example:
+            // Handle the error from the initial query
             console.error("Error executing query:", err);
             res.status(500).send("Internal Server Error");
-        })
+        });
 });
+
 
 export default app; // Exporting Router instance
