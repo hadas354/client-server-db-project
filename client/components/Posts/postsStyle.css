@@ -1,0 +1,100 @@
+.postTitle {
+    height: fit-content;
+    width: fit-content;
+    margin: 2vw;
+    padding: 1%;
+    border-radius: 15px;
+    border: solid 3px rgb(18, 26, 122);
+    background-color: rgba(207, 205, 205, 0.43);
+}
+
+.post input[type="color"] {
+    margin-top: 20%;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.419);
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 85%;
+    justify-content: center;
+    margin: auto;
+}
+
+
+.wrapper{
+    top: 5vh;
+    left: 5vh;
+    width: 90vw;
+    height: 90vh;
+    background-color: rgba(156, 138, 236, 0.314);
+    position:absolute;
+}
+
+.postEdit{
+    width: 70%;
+    height: 70%;
+    margin: 10vh auto;
+    background-color: white;
+    padding: 20%;
+    box-sizing: border-box;
+    border-radius: 15px;
+}
+.postsKind{
+    display: flex;
+    justify-content: center;
+    
+}
+.postsKind h2{
+    margin: 15px;
+    border-bottom: 2px double;
+}
+.searchButton {
+    width: 7vw;
+    height: 6.5vh;
+}
+.addPostButton{
+    margin-left: 75%;
+    position: absolute;
+    width: 5vw;
+    border: 2px double orange;
+    font-size: 25px;
+    font-weight: bolder;
+    padding: 3px;
+    padding-bottom: 5px;
+}
+p{
+    width: 70%;
+    margin: auto;
+}
+.searchPost input {
+    width: 70%;
+    margin-right: 15%;
+}
+h3{
+    color:orange;
+}
+.singleComment{
+    text-align: left;
+}
+h5{
+    margin-left: 15%;
+}
+.commentsActions{
+    margin-left: 70%;
+    position: absolute;
+    margin-top: -80px;
+}
+.privateDetails{
+    text-decoration:underline;
+}
+.bodyP{
+    width: 50%;
+    justify-content: space-around;
+    background-color: rgba(156, 138, 236, 0.314);
+    padding:30px ;
+    border-radius: 5px;
+}

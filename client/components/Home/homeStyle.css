@@ -1,0 +1,45 @@
+.home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 65%;
+}
+
+.option {
+    border-radius: 15px;
+    background-color: rgba(69, 66, 66, 0.414);
+    width: 24%;
+    height: 60%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-weight: 800;
+    text-shadow: 2px 2px 5px #343232;
+    color: white;
+    font-size: 2em;
+    box-shadow: 0 15px 25px -10px #000;
+    box-sizing: border-box;
+}
+
+.todosHome {
+    background-image: url("../../assets/todos1.jpg");
+}
+
+.postsHome {
+    background-image: url("../../assets/posts.jpg");
+}
+
+.albumsHome {
+    background-image: url("../../assets/albums.jpg");
+}
+
+.info {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    height: 15%;
+    box-sizing: border-box;
+}

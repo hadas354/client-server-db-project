@@ -5,8 +5,8 @@ import mysql from 'mysql2';
 export const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    password: '1570',
-    // password: '02042024',
+    // password: '1570',
+    password: '02042024',
     database: 'jsonplaceholderdemo'
 }).promise();
 
