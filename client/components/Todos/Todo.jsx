@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './todosStyle.css'
+import './TodosStyle.css'
 import TodoEdit from './TodoEdit';
 
 export default function Todo({ todoId, setTodos }) {

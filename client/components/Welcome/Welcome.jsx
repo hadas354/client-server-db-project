@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink, Outlet, Route, Routes } from 'react-router-dom'
-import NavBar from '../General/NavBar'
 function Welcome() {
     return (
         <>
