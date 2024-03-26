@@ -5,12 +5,12 @@ import mysql from 'mysql2';
 export const pool = mysql.createPool({
     host: 'localhost',
     user: 'root',
-    // password: '1570',
-    password: '02042024',
+    password: '1570',
+    // password: '02042024',
     database: 'jsonplaceholderdemo'
 }).promise();
 
 //runs on port 3306
-await drop();
-await create();
-await insert(); //-default for start
+// await drop();
+// await create();
+// await insert(); //-default for start

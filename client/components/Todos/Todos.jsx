@@ -12,7 +12,7 @@ export default function Todos() {
 
   const { id } = useParams();
   useEffect(() => {
-    fetch(`http://localhost:3305/todos?_page=${currentPage}&_limit=5&userId=${id}`)
+    fetch(`http://localhost:3305/todos?_page=${currentPage}&_limit=5&userID=${id}`)
       .then(response => response.json())
       .then(json => {
         setTodos(json);
@@ -25,7 +25,7 @@ export default function Todos() {
   }, [currentPage]);
 
   function handleSearch() {
-    fetch(`http://localhost:3305/todos/?userId=${id}&q=${search}`)
+    fetch(`http://localhost:3305/todos/?userID=${id}&q=${search}`)
       .then(response => response.json())
       .then(json => {
         setTodos(json);
