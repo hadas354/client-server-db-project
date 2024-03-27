@@ -13,7 +13,7 @@ export default function Posts() {
   const [postsKind, setPostsKind] = useState('My Posts');
 
   function handleSearch() {
-    fetch(`http://localhost:3305/posts/?&userId=${id}`)
+    fetch(`http://localhost:3305/posts/?&userID=${id}`)
       .then(response => response.json())
       .then(json => {
         setPosts(json);
@@ -34,7 +34,7 @@ export default function Posts() {
       document.querySelector('.postsKind').firstElementChild.classList.add('kindOfPosts');
       document.querySelector('.postsKind').lastElementChild.classList.remove('kindOfPosts');
     } else if (postsKind === 'My Posts') {
-      await fetch(`http://localhost:3305/posts?_page=${currentPage}&_limit=8&userId=${id}`)
+      await fetch(`http://localhost:3305/posts?_page=${currentPage}&_limit=8&userID=${id}`)
         .then(re => re.json())
         .then(data => setPosts(data))
         .catch(e => console.log(e));

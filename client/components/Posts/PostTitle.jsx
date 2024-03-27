@@ -3,10 +3,11 @@ import { NavLink, useParams } from 'react-router-dom'
 import { useState } from 'react';
 
 export default function PostTitle({ post }) {
+  // console.log(post);
   const { id } = useParams();
   const [userPost, setUserPost] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:3305/users/?id=${post.userId}`)
+    fetch(`http://localhost:3305/users/${post.userID}`)
       .then(response => response.json())
       .then(json => {
         setUserPost(json[0]);

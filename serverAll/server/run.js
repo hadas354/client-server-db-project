@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import { app as usersRouter } from '../server/users.js';
 import {app as postsRouter } from '../server/posts.js';
 import { app as todosRouter } from '../server/todos.js';
@@ -7,6 +8,10 @@ import { app as commentsRouter } from '../server/comments.js';
 export const app = express();
 
 app.use(express.json()); // Middleware to parse JSON bodies
+//make requests from localhost everywhere
+app.use(cors({
+    origin: '*'
+  }));
 
 app.use("/users", usersRouter);
 app.use("/posts", postsRouter);

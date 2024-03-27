@@ -13,7 +13,7 @@ function AddTodo({ setShowAdd, setTodos }) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ title: title, completed: false, userId: id })
+            body: JSON.stringify({ title: title, completed: false, userID: id })
         }
         fetch(url, options)
             .then(response => response.json())
