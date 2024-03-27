@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import './formsStyle.css';
+import { log } from 'console';
 
 function LogIn() {
     const [userName, setUserName] = useState("");
@@ -14,7 +15,7 @@ function LogIn() {
             setLoginMessage('Please fill in all fields.');
             return;
         }
-        const response = await fetch(`http://localhost:3005/users/?username=${userName}&website=${password}`);
+        const response = await fetch(`http://localhost:3305/users/?username=${userName}&website=${password}`);
         if (!response.ok && response.status != 404) {
             setLoginMessage("You don't have an account yet. Create an account to register");
             return;

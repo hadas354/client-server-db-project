@@ -1,7 +1,6 @@
 import React from 'react'
 import { NavLink, useParams, Link, Navigate } from 'react-router-dom'
 import './homeStyle.css'
-import ExitPage from './ExitPage';
 
 function Home() {
   const { id } = useParams();
