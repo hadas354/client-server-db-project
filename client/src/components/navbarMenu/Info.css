@@ -1,0 +1,19 @@
+.infoContaner{
+    background-color: #a98467;
+    width: 75vw;
+    margin-left: 7.5vw;
+    margin-top: 13px;
+    padding: 15px;
+    border-radius: 20px;
+}
+b{
+    color: #6c584c;
+}
+
+#userTitle{
+    color: #adc178;
+}
+
+.titleDet{
+    color: #f0ead2;
+}

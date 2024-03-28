@@ -1,0 +1,54 @@
+#searchDiv{
+    display: flex;
+    justify-content: space-around;
+}
+
+.searchDivChild{
+    background-color: rgba(240, 248, 255, 0.471);
+    width: 40vw;
+    align-items: center;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+#searchTitle,
+#searchUserId{
+    width: 35vw;
+}
+
+.dataDiv{
+    width: 40vw;
+    background-color: #dde5b6;
+    margin-left: 25vw;
+    margin-top: 13px;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.postsContent{
+    align-items: center;
+}
+
+#addPost{
+    width: 90vw;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(10, 186, 54, 0.721);
+    padding: 7px;
+    margin-top: 20px;
+    margin-left: 3vw;
+}
+
+#newPostTitle,
+#newPostTitle{
+    width: 50vw;
+    margin-left: 20vw;
+}
+
+.changeBtn{
+    margin-top: 10px;
+}
+
+.commentDiv{
+    border: 1px solid black;
+}

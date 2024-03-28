@@ -1,0 +1,57 @@
+.container{
+    width: 36vw;
+    margin-left: 32vw;
+    margin: 20px 0 20px 32vw;
+}
+
+#searchFChild,
+#searchSChild{
+    width: 36vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchInput,
+.searchBtn{
+    width: 11vw;
+}
+
+.searchInputTxt{
+    width: 10.5vw;
+}
+
+#sort{
+    width: 36vw;
+    background-color: #6c584c;
+}
+
+table{
+    background-color: #adc178;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#newTodoTitle{
+    width: 36vw;
+    color: #6c584c;
+}
+
+#addBtn{
+    width: 36.5vw;
+}
+
+.searchInput,
+.searchBtn,
+.inputTodo,
+.searchInputTxt{
+    background-color: #6c584c;
+    border: 2px solid #dde5b6;
+    margin: 3px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#addTodo{
+    background-color: #dde5b6;
+    width: 38vw;
+}

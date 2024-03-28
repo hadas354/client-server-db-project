@@ -1,0 +1,30 @@
+#detForm{
+    background-color: #6c584c;
+    padding: 7px;
+}
+
+#titleDet{
+    color: #adc178;
+    border-bottom: 1px solid #adc178;
+}
+
+.inputDet{
+    background-color: #a98467;
+    border: none;
+    height: 40px;
+    width: 300px;
+    color: #adc178;
+    border-radius: 3px;
+}
+label{
+    color: #adc178;
+}
+
+#submitDet{
+    height: 40px;
+    width: 300px;
+    margin: 5px;
+    background-color: #f0ead2;
+    color: #a98467;
+    font-size: larger;
+}
