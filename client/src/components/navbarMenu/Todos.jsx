@@ -13,6 +13,7 @@ export default function Todos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(userData);
         const res = await fetch(
           `http://localhost:3305/todos?userId=${userData.id}`
         );
