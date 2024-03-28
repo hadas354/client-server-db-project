@@ -11,6 +11,6 @@ export const pool = mysql.createPool({
 }).promise();
 
 //runs on port 3306
-// await drop();
-// await create();
-// await insert(); //-default for start
+await drop();
+await create();
+await insert(); //-default for start

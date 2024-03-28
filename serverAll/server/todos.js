@@ -87,6 +87,7 @@ app.put("/:id", (req, res) => {
     // console.log("put function");
     const id = req.params.id;
     const { userId, title, completed } = req.body;
+    
     pool.query(
         `UPDATE todos SET userId = ${userId}, title = '${title}', completed = ${completed} WHERE id = ${id}`)
         .then((result) => {

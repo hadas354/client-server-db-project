@@ -1,4 +1,5 @@
-// // import React from "react";
+/* eslint-disable no-unused-vars */
+import React from "react";
 // import { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import "./Info.css";
@@ -25,23 +26,8 @@ export default function Info() {
       <p>
         <b>Email: </b> {parsedData.email}
       </p>
-
-      <h3 className="titleDet">Address</h3>
       <p>
-        <b>Street: </b> {parsedData.address.street}
-      </p>
-      <p>
-        <b>Suite: </b> {parsedData.address.suite}
-      </p>
-      <p>
-        <b>City: </b> {parsedData.address.city}
-      </p>
-      <p>
-        <b>Zipcode: </b> {parsedData.address.zipcode}
-      </p>
-      <p>
-        <b>Geo: </b> <b>Lat -</b> {parsedData.address.geo.lat}, <b>Lng -</b>{" "}
-        {parsedData.address.geo.lng}
+        <b>City: </b> {parsedData.city}
       </p>
 
       <p>
@@ -51,15 +37,8 @@ export default function Info() {
         <b>Website:</b> {parsedData.website}
       </p>
 
-      <h3 className="titleDet">Company</h3>
       <p>
-        <b>Company Name:</b> {parsedData.company.companyName}
-      </p>
-      <p>
-        <b>Catch Phrase:</b> {parsedData.company.catchPhrase}
-      </p>
-      <p>
-        <b>Business:</b> {parsedData.company.bs}
+        <b>Company Name:</b> {parsedData.companyName}
       </p>
     </div>
   );

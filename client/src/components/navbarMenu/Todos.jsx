@@ -67,10 +67,11 @@ export default function Todos() {
   }
   async function updateDBCheckbox(todo) {
     let todoHelper={
-      "userId": todo.userId,
+      "userID": todo.userID,
       "title": todo.title,
-      "body": todo.body
+      "completed": todo.completed
     }
+    console.log(todoHelper);
     const response = await fetch(`http://localhost:3305/todos/${todo.id}`, {
       method: "PUT",
       body: JSON.stringify(todoHelper),
