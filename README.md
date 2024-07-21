@@ -39,8 +39,9 @@ This project is a web application that allows users to manage and track their da
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14 or later)
-- MongoDB
+- [Node.js](https://nodejs.org/en/download/package-manager) (v14 or later)
+- [MySQL](https://dev.mysql.com/downloads/mysql/) (v5.7 or later)
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/) (optional, for database management)
 
 ### Installation
 1. Clone the repository:
@@ -55,36 +56,47 @@ git clone https://github.com/hadas354/client-server-db-project.git
 cd client-server-db-project
 ```
 
-3. Install dependencies for both frontend and backend:
+3. Install dependencies:
 
 ```bash
-cd frontend && npm install cd ../backend && npm install
+npm install
 ```
 
 4. Set up environment variables:
 Create a `.env` file in the backend directory and add the following:
 
 ```bash
-PORT=5000 MONGODB_URI=your_mongodb_connection_string JWT_SECRET=your_jwt_secret
+PORT=5000 
+
+MONGODB_URI=your_mongodb_connection_string 
+
+JWT_SECRET=your_jwt_secret
 ```
 
 
 ### Running the Application
-1. Start the backend server:
+1. Start the database:
 
 ```bash
-cd backend && npm start
+npm run db
 ```
 
-2. In a new terminal, start the frontend:
+2. In a new terminal, start the server:
 
 ```bash
-cd frontend && npm start
+npm run server
 ```
 
-3. Open your browser and navigate to `http://localhost:3000`
+4. In another terminal, start the Vite development server for the frontend:
+
+```bash
+npm run start
+```
+
+4. Open your browser and navigate to `http://localhost:3000`
 
 ## Contributing
 - [Yokheved](https://github.com/yokheved)
 - [Hadas354](https://github.com/hadas354)
+
 Contributions are welcome! Please feel free to submit a Pull Request.
