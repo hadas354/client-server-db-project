@@ -32,7 +32,7 @@ This project is a web application that allows users to manage and track their da
 ## Technologies Used
 - Frontend: React.js
 - Backend: Node.js with Express.js
-- Database: MongoDB
+- Database: MySQL
 - Authentication: JSON Web Tokens (JWT)
 - Styling: CSS with Flexbox
 
