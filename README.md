@@ -62,18 +62,6 @@ cd client-server-db-project
 npm install
 ```
 
-4. Set up environment variables:
-Create a `.env` file in the backend directory and add the following:
-
-```bash
-PORT=5000 
-
-MONGODB_URI=your_mongodb_connection_string 
-
-JWT_SECRET=your_jwt_secret
-```
-
-
 ### Running the Application
 1. Start the database:
 
